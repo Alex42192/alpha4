@@ -1,0 +1,437 @@
+:root{
+    --white : #fff;
+    --black : #000;
+    --cardBorder : #ffffff30;
+    --cardBackground : #ffffff1a;
+    --btnBg : #ffffff00;
+    --btnFocus : #ffffffb9;
+
+    --facebook : #1771e6;
+    --twitter : #1c99e6;
+    --instagram : #cb2770;
+    --whatsapp : #1ba542;
+    --telegram : #0081c2;
+    --github : rgb(88, 101, 242);
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    /* font-size: 1.6rem; */
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    /* background-image: url(https://tenor.com/en-GB/view/bomb-black-and-white-gif-14564654); */
+    /* z-index: 5; */
+}
+
+.wrapper{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000;
+    /* position: fixed; */
+    /* background-size: cover; */
+}
+
+.wrapper .circle-top{
+    width: 7rem;
+    height: 7rem;
+    border-radius: 50%;
+    position: fixed;
+    top: 20%;
+    left: 30%;
+    background: linear-gradient(-25deg, #d84869, #f46641);
+    box-shadow: 0 0 50px #d84869;
+    animation: circleTop 7s ease infinite;
+}
+
+@keyframes circleTop{
+    50%{
+        left: 33%;
+        top: 15%;
+        scale: 1.11;
+    }
+}
+.wrapper .circle-bottom{
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 5%;
+    right: 30%;
+    background: linear-gradient(-25deg, #5648d8, #8641f4);
+    box-shadow: 0 0 50px #5648d8;
+    animation: circleBottom 5s ease infinite; 
+}
+
+
+@keyframes circleBottom{
+    50% {
+        bottom: 15%;
+        right: 31%;
+        scale: 1.11;
+    }
+}
+
+.wrapper .card{
+    height: 35rem;
+    width: 28rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    background: var(--cardBackground);
+    border: 0.2rem solid var(--cardBorder);
+    border-radius: 1.5rem;
+    padding: 2rem 5rem;
+    backdrop-filter: blur(.5rem);
+    position: relative;
+    z-index: 10;
+}
+
+.card img{
+    height: 15rem;
+    width: 15rem;
+    border-radius: 50%;
+    border: 2px solid rgba(189, 189, 189, 0.507);
+    cursor: pointer;
+    user-select: none;
+    /* box-shadow: 0px 0px 15px 6px rgb(196, 182, 182); */
+
+}
+
+
+.user-name{
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px #a1e9df8f;
+    cursor: pointer;
+    user-select: none;
+}
+
+.user-designation
+{
+    font-size: 1.4rem;
+    color: rgb(233, 121, 56);
+    text-shadow: 1px 1px #dfb1e0ab;
+}
+.card .buttons-group{
+    display: flex;
+    gap: 1rem;
+}
+
+.card .buttons-group button{
+    width: 12rem;
+    color: var(--btnFocus);
+
+    background: var(--btnBg);
+    text-transform: capitalize;
+    /* border: 2px solid var(--btnFocus); */
+    border: 1px solid rgba(128, 128, 128, 0.404);
+    border-radius: 0.4rem;
+    padding: 0.8rem 1.2rem;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+    /* box-shadow: 0px 0px 8px 2px rgb(226, 178, 178); */
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.card .buttons-group #share-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.card .buttons-group button:hover{
+    background-color: var(--btnFocus);
+    color: #353434;
+    scale: 0.95;
+
+}
+
+.card .buttons-group button:hover i{
+    color: rgb(142, 4, 255);
+    scale: 1.11;
+}
+
+
+
+
+/* modal body  */
+
+
+.modal{
+    width: 45rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    color: var(--white);
+    background: #00000088;
+    padding: 2rem 2.5rem;
+    border: 0.2rem solid #ffffff59;
+    border-radius: 2rem;
+    backdrop-filter: blur(1rem);
+    scale: 0;
+    transition: all 0.7s ease-in-out;
+    z-index: 30;
+}
+
+.modal-active{
+    scale: 1;
+}
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1.2rem;
+    border-bottom: 0.1rem solid #ffffff88;
+    margin-bottom: 2.5rem;
+}
+
+.modal-header .modal-title{
+    font-size: 2rem;
+
+}
+
+.modal-header .modal-close{
+    font-size: 2rem;
+}
+
+.modal-body h3{
+    margin-top:-1rem;
+    font-size: 2rem;
+}
+
+.modal-body .social-icons{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    column-gap: 1rem;
+}
+
+.modal-body .social-icons .icon{
+    width: 5rem;
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid #ffffff88;
+    transition: all 0.5s ease-in-out;
+    margin: -1rem 0 1.5rem;
+}
+.modal-body .social-icons .icon {
+    font-size: 2.5rem; 
+}
+
+.modal-body .social-icons a{
+    text-decoration: none;
+}
+
+
+#facebook-icon{
+    color: var(--facebook);
+    border: 1px solid var(--facebook);
+    transition: all 1s;
+}
+
+#facebook-icon:hover{
+    color: var(--white);
+    background: var(--facebook);
+    box-shadow: 0px 0px 20px 9px var(--facebook);
+    scale: 0.9;
+    transform: rotate(360deg);
+    
+}
+
+
+#twitter-icon {
+    color: var(--twitter);
+    border: 1px solid var(--twitter);
+    transition: all 1s;
+
+}
+
+#twitter-icon:hover{
+    color: var(--white);
+    background: var(--twitter);
+    box-shadow: 0px 0px 20px 9px var(--twitter);
+    scale: 0.9;
+    transform: rotate(360deg);
+
+
+
+}
+
+#instagram-icon {
+    color: var(--instagram);
+    border: 1px solid var(--instagram);
+    transition: all 1s;
+
+}
+
+#instagram-icon:hover{
+    color: var(--white);
+    background: var(--instagram);
+    box-shadow: 0px 0px 20px 9px var(--instagram);
+    scale: 0.9;
+    transform: rotate(360deg);
+
+
+
+}
+
+#whatsapp-icon {
+    color: var(--whatsapp);
+    border: 1px solid var(--whatsapp);
+    transition: all 1s;
+
+}
+
+#whatsapp-icon:hover{
+    color: var(--white);
+    background: var(--whatsapp);
+    box-shadow: 0px 0px 20px 9px var(--whatsapp);
+    scale: 0.9;
+    transform: rotate(360deg);
+
+
+
+}
+
+#telegram-icon {
+    color: var(--telegram);
+    border: 1px solid var(--telegram);
+    transition: all 1s;
+
+}
+
+#telegram-icon:hover{
+    color: var(--white);
+    background: var(--telegram);
+    box-shadow: 0px 0px 20px 9px var(--telegram);
+    scale: 0.9;
+    transform: rotate(360deg);
+
+}
+
+#github-icon {
+    color: var(--github);
+    border: 1px solid var(--github);
+    transition: all 1s;
+
+}
+
+#github-icon:hover{
+    color: var(--white);
+    background: var(--github);
+    box-shadow: 0px 0px 20px 9px var(--github);
+    transform: rotate(360deg);
+
+
+}
+
+#follow-unfollow:link{
+    width: 10rem;
+    color: var(--white);
+    background: #09b43a;
+    padding: .5rem 2rem;
+    margin-top: -2rem;
+    border: .8px solid var(--white);
+    border-radius: 0.5rem;
+    text-align: center;
+    font-size: 1.8rem;
+    transition: all 0.5s ease-out;
+
+}
+#follow-unfollow:hover{
+    box-shadow: 0px 0px 20px 3px var(--white);
+
+}
+
+#follow-unfollow:active{
+    background: #e34c26;
+}
+
+/* /// overlay /// */
+.overlay{
+    position: fixed;
+    left: 0; 
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #5f5f5f83;
+    transition: 0.5s ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.overlay-active {
+    opacity: 1;
+    pointer-events: initial;
+}
+
+
+/* ///////// media queries /////////// */
+@media (max-width: 850px) {
+    .wrapper .card {
+      width: 25rem;
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+
+    .card .buttons-group {
+      flex-direction: column;
+      padding-top: 0.7rem;
+    }
+
+    .modal {
+      width: 75vw;
+    }
+
+    .modal-header .modal-title {
+        font-size: 2.5rem;
+    }
+
+    .modal-body .social-icons{
+        column-gap: 0rem;
+    }
+
+    .modal-body .social-icons .icon{
+        height: 3.5rem;
+        width:3.5rem;
+        font-size: 1.7rem;
+    }
+  }
+
+@media (max-width: 400px) {
+    .wrapper .card {
+        width: 30rem;
+    }
+
+    .card img{
+        width: 13rem;
+        height: 13rem;
+    }
+
+    .card .user-name{
+        font-size: 2.6rem;
+    }
+
+    .modal {
+        width: 90vw;
+    }
+}
